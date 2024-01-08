@@ -8,7 +8,6 @@ BareDB is a lightweight and easy-to-use C library for basic database operations.
 - [Features](#features)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
-- [Functions](#functions)
 - [Examples](#examples)
 - [Contributing](#contributing)
 - [License](#license)
@@ -49,15 +48,31 @@ typedef struct {
 } point;
 
 int main(void) {
+    // Open the database
     table_t table;
     bare_open(&table, "database.db", sizeof(point));
 
+    // Create a point struct with specific values
     point p = {.x = 5, .y = 10};
 
+    // Insert the point struct into the database
     bare_insert(&table, &p);
 
+    // Close the database
     bare_close(&table);
+
+    return 0;
 }
 ```
 
-    
+## Examples
+
+See the examples directory for usage examples.
+
+Contributing
+
+Contributions are welcome! Feel free to open issues, submit pull requests, or provide feedback.
+
+## License
+
+BareDB is licensed under the MIT License. See the LICENSE file for details.
