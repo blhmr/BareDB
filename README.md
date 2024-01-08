@@ -1,6 +1,6 @@
 # BareDB - Minimalistic and Lightweight C Library for Generic Struct Database
 
-BareDB is a lightweight and easy-to-use C library for basic database operations. It allows you to add, read, update, and delete structs in a binary file.
+BareDB is a lightweight and easy-to-use C library for basic database operations. It allows you to add, read, update, and delete structs in a database file.
 
 ## Table of Contents
 
