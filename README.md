@@ -11,7 +11,4 @@ BareDB is a free and open-source C library designed for storing and managing gen
 ## Getting Started
 
 ### Installation
-
-1. Clone the BareDB repository:
-   ```bash
-   git clone https://github.com/yourusername/BareDB.git
+soon...
