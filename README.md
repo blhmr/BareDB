@@ -50,7 +50,7 @@ typedef struct {
 
 int main(void) {
     table_t table;
-    bare_open(&table, "database.db");
+    bare_open(&table, "database.db", sizeof(point));
 
     point p = {.x = x, .y = y};
 
