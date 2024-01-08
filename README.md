@@ -52,7 +52,7 @@ int main(void) {
     table_t table;
     bare_open(&table, "database.db", sizeof(point));
 
-    point p = {.x = x, .y = y};
+    point p = {.x = 5, .y = 10};
 
     bare_insert(&table, &p);
 
