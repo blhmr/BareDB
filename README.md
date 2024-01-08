@@ -75,8 +75,6 @@ Contributions are welcome! Feel free to open issues, submit pull requests, or pr
 
 ## License
 
-## License
-
 BareDB is open-source software licensed under the [MIT License](LICENSE).
 
 **MIT License**
