@@ -69,7 +69,7 @@ int main(void) {
 
 See the examples directory for usage examples.
 
-Contributing
+## Contributing
 
 Contributions are welcome! Feel free to open issues, submit pull requests, or provide feedback.
 
