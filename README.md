@@ -19,10 +19,12 @@ BareDB is designed to provide a simple yet powerful solution for basic database 
 
 ## Features
 
-- Add structs to a binary file
-- Read structs from a binary file
-- Update structs in a binary file
-- Delete structs at a specific index from a binary file
+- Add structs to a .db file
+- Read structs from a .db file
+- Update structs in a .db file
+- Delete structs at a specific index from a .db file
+- More in the future
+(You can use .bin files)
 
 ## Getting Started
 
@@ -36,7 +38,26 @@ To use BareDB in your C project, follow these steps:
 
 ## Usage
 
+Bellow is a simple program to insert a point struct into a "database.db" database:
+
 ```c
 #include "baredb.h"
 
-// Your BareDB-powered code goes here
+typedef struct {
+    int x;
+    int y;
+} point;
+
+int main(void) {
+    table_t table;
+    bare_open(&table, "database.db");
+
+    point p = {.x = x, .y = y};
+
+    bare_insert(&table, &p);
+
+    bare_close(&table);
+}
+```
+
+    
