@@ -34,32 +34,21 @@ BareDB offers a compelling choice for developers seeking a straightforward and e
 
 To use BareDB in your C project, follow these steps:
 
-1. Clone the repository or download the source files.
-```git clone https://github.com/blhmr/BareDB.git```
-
-2. Create an installation script.
+1. Clone this repo:
 ```bash
-#!/bin/bash
-
-# Compile the library
-gcc -c src/baredb.c -o libbaredb.o
-
-# Create a shared library
-gcc -shared -o libbaredb.so libbaredb.o
-
-# Copy the header file to the default include directory
-cp baredb.h /usr/include/
-
-# Copy the library file to the default library directory
-cp libbaredb.so /usr/lib/
-
-# Inform the user about the installation
-echo "BareDB library installed successfully!"
+git clone https://github.com/blhmr/BareDB.git
 ```
-3. Run the installation.
+
+2. Change directory and build to see an example of usage (`main.c`):
 ```bash
-chmod +x install.sh
-./install.sh
+cd BareDB
+make build
+./main
+```
+
+3. Clean:
+```bash
+make clean
 ```
 
 ## Usage
@@ -91,10 +80,11 @@ int main(void) {
     return 0;
 }
 ```
+Of course you can read `main.c` to see how all the functions work!
 
 ## Examples
 
-See the examples directory for usage examples.
+See the examples directory for usage examples. (Coming soon)
 
 ## Contributing
 
