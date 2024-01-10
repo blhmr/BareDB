@@ -6,7 +6,7 @@ BareDB is a lightweight and easy-to-use C library for basic database operations.
 
 - [Overview](#overview)
 - [Features](#features)
-- [Why BareDB ?] (#why-baredb)
+- [Why BareDB] (#why-baredb)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
 - [Examples](#examples)
@@ -26,7 +26,7 @@ BareDB is designed to provide a simple yet powerful solution for basic database 
 - More in the future
 (You can use .bin files)
 
-## Why BareDB ?
+## Why BareDB
 
 BareDB offers a compelling choice for developers seeking a straightforward and efficient solution for basic database operations in the C programming language. As a lightweight and user-friendly C library, BareDB simplifies the process of managing structured data by providing an intuitive interface for adding, reading, updating, and deleting structs (soon) within a database file. Its simplicity allows even those new to database programming to seamlessly incorporate database functionalities into their C applications. With BareDB, developers can leverage its ease of use and minimalist design to streamline their codebase, ensuring that database operations are both accessible and efficient. Whether for small-scale projects or as an easy-to-integrate component in larger applications, BareDB stands out as a valuable tool for simplifying the implementation of fundamental database functionalities in C, contributing to a more straightforward and organized development process.
 
