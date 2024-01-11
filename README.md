@@ -28,7 +28,7 @@ BareDB is designed to provide a simple yet powerful solution for basic database 
 (You can use .bin files)
 
 ## Limitations
-- Not endian clean, so portability is an issue especially when you want to write in a little endian machine and read data in a big endian machine (or vice-versa)
+- Not endian clean, so portability is an issue especially when you want to write in a little endian machine and read data in a big endian machine (or vice-versa) (Working on this issue)
 
 ## Why BareDB
 
