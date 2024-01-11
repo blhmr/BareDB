@@ -108,7 +108,7 @@ Of course you can read `main.c` to see how all the functions work!
 
 ## Examples
 
-See the examples directory for usage examples. (Coming soon)
+See the examples directory for usage examples.
 
 ## Contributing
 
