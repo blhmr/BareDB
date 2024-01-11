@@ -32,7 +32,7 @@ BareDB is designed to provide a simple yet powerful solution for basic database 
 
 ## Why BareDB
 
-BareDB simplifies basic database operations in C with a user-friendly and lightweight approach. It provides an intuitive interface for adding, reading, updating, and deleting structs in a database file. Even for beginners, BareDB offers a straightforward way to incorporate database functionalities into C applications. Its minimalist design streamlines code, making database operations accessible and efficient. Whether for small projects or as a component in larger applications, BareDB is a valuable tool, simplifying the implementation of fundamental database functions in C.
+BareDB streamlines basic database operations in C, offering a user-friendly, lightweight solution. With an intuitive interface, it simplifies adding, reading, updating, and deleting structs in a database file. Ideal for beginners, BareDB's minimalist design ensures efficiency, making it a valuable tool for fundamental database functions in C.
 
 ## Getting Started
 
