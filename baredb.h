@@ -4,12 +4,18 @@
 #ifndef __BARE_DB__
 #define __BARE_DB__
 
+// Provide C++ Compatibility
+#ifdef	__cplusplus
+extern "C" {
+#endif
+
 // Include necessary standard header files
 #include <stdio.h> // File handling
 #include <string.h> // Copying string
 #include <stdlib.h> // Memory allocation
 #include <inttypes.h> // uint64_t
-#include <unistd.h> // ftruncate()
+#include <stdbool.h> // Boolean
+#include <endian.h> // Portability
 
 typedef struct __attribute__((packed)) {
 	char filename[255]; // Name of the file/database

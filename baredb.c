@@ -3,13 +3,14 @@
 // Opening a database
 int bare_open(table_t* table, const char* filename, size_t size) {
 	table->file = fopen(filename, "wb+"); // Open file	
+
 	// Error handling !
 	if (table->file == NULL)
 		return -1;
-	
+
 	strcpy(table->filename, filename); // Copy filename
 	table->obj_size = size; // Object size
-	
+
 	return 1; // Return success
 }
 
@@ -26,9 +27,17 @@ int bare_insert(table_t* table, void* data) {
 	if (table->file == NULL)
 		return -1;
 
+#if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+	// If little endian, swap byte order
+	for (size_t i = 0; i < table->obj_size / 2; ++i) {
+		uint8_t temp = ((uint8_t*)data)[i];
+		((uint8_t*)data)[i] = ((uint8_t*)data)[table->obj_size - i - 1];
+		((uint8_t*)data)[table->obj_size - i - 1] = temp;
+	}
+#endif
+
 	fseek(table->file, 0, SEEK_END); // Positioning the cursor pointer to the end
 	fwrite(data, table->obj_size, 1, table->file); // Write to file (assuming the size of 'data' and table->obj_file are the same)
-	
 	return 1; // Return success
 }
 
@@ -38,10 +47,19 @@ int bare_get(table_t* table, void* data, uint64_t index) {
 	if (table->file == NULL)
 		return -1;
 
+#if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+	// If little endian, swap byte order
+	for (size_t i = 0; i < table->obj_size / 2; ++i) {
+		uint8_t temp = ((uint8_t*)data)[i];
+		((uint8_t*)data)[i] = ((uint8_t*)data)[table->obj_size - i - 1];
+		((uint8_t*)data)[table->obj_size - i - 1] = temp;
+	}
+#endif
+
 	fseek(table->file, index * table->obj_size, SEEK_SET); // Positioning the cursor to the targeted struct
 	fread(data, table->obj_size, 1, table->file); // Read the data from the database
 
-   return 1; // Return success	
+	return 1; // Return success	
 }
 
 // Getting number of structs/records in the database
@@ -60,14 +78,33 @@ size_t bare_size(table_t* table) {
 
 // Updating a record/struct in the database
 int bare_update(table_t* table, void* data, uint64_t index) {
-	// Error handling
-	if (table->file == NULL)
-		return -1;
+    // Error handling
+    if (table->file == NULL)
+        return -1;
 
-	fseek(table->file, index * table->obj_size, SEEK_SET); // Positioning the cursor to the targeted struct
-	fwrite(data, table->obj_size, 1, table->file); // Overwrite data
+    fseek(table->file, index * table->obj_size, SEEK_SET); // Positioning the cursor to the targeted struct
 
-	return 0; // Return success
+    // If big endian, swap byte order before updating
+    #if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+        for (size_t i = 0; i < table->obj_size / 2; ++i) {
+            uint8_t temp = ((uint8_t*)data)[i];
+            ((uint8_t*)data)[i] = ((uint8_t*)data)[table->obj_size - i - 1];
+            ((uint8_t*)data)[table->obj_size - i - 1] = temp;
+        }
+    #endif
+
+    fwrite(data, table->obj_size, 1, table->file); // Overwrite data
+
+    // If big endian, swap byte order back after updating
+    #if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+        for (size_t i = 0; i < table->obj_size / 2; ++i) {
+            uint8_t temp = ((uint8_t*)data)[i];
+            ((uint8_t*)data)[i] = ((uint8_t*)data)[table->obj_size - i - 1];
+            ((uint8_t*)data)[table->obj_size - i - 1] = temp;
+        }
+    #endif
+
+    return 0; // Return success
 }
 
 // Deleting a record/struct at a specific index
