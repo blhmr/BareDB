@@ -15,7 +15,7 @@
 typedef struct {
 	char filename[255]; // Name of the file/database
 	FILE* file; // Pointer to the file/database
-	size_t obj_size; // Size of object type we want to store (MUST BE THE SAME STRUCT (Check documentation))
+	size_t obj_size; // Size of object type we want to store (MUST BE THE SAME STRUCT)
 } table_t;
 
 // Opening and Closing a database
