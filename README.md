@@ -19,16 +19,16 @@ BareDB is designed to provide a simple yet powerful solution for basic database 
 
 ## Features
 
-- Add structs to a .db file
-- Read structs from a .db file
-- Update structs in a .db file
-- Delete structs at a specific index from a .db file (Soon...)
+- Add structs to a database
+- Read structs from a database
+- Update structs in a database
+- Delete structs at a specific index from a database
 - More in the future
 (You can use .bin files)
 
 ## Why BareDB
 
-BareDB simplifies basic database operations in C with a user-friendly and lightweight approach. It provides an intuitive interface for adding, reading, updating, and soon deleting structs in a database file. Even for beginners, BareDB offers a straightforward way to incorporate database functionalities into C applications. Its minimalist design streamlines code, making database operations accessible and efficient. Whether for small projects or as a component in larger applications, BareDB is a valuable tool, simplifying the implementation of fundamental database functions in C.
+BareDB simplifies basic database operations in C with a user-friendly and lightweight approach. It provides an intuitive interface for adding, reading, updating, and deleting structs in a database file. Even for beginners, BareDB offers a straightforward way to incorporate database functionalities into C applications. Its minimalist design streamlines code, making database operations accessible and efficient. Whether for small projects or as a component in larger applications, BareDB is a valuable tool, simplifying the implementation of fundamental database functions in C.
 
 ## Getting Started
 
@@ -46,7 +46,30 @@ make build
 ./main
 ```
 
-3. Clean:
+3. In case you to install the library as a default library on your system (Linux):
+- For a static library:
+```bash
+gcc -c baredb.c -o libbaredb.o # Compile the Library
+sudo cp libbaredb.so /usr/lib # Copy the Library
+sudo ldconfig # Update Library Cache
+sudo cp baredb.h /usr/include # Include Header Files
+```
+
+Usage in Programs:
+```c
+#include <baredb.h>
+
+int main(void) {
+    // Your program logic using BareDB functions
+    return 0;
+}
+```
+
+```bash
+gcc -o your_program your_program.c -lbaredb
+```
+
+5. Clean:
 ```bash
 make clean
 ```
