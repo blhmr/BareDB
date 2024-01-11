@@ -50,12 +50,12 @@ size_t bare_size(table_t* table) {
 	if (table->file == NULL)
 		return -1;
 
-	size_t bites; // Number of bites in the file
+	size_t bytes; // Number of bytes in the file
 
 	fseek(table->file, 0, SEEK_END);
-	bites = ftell(table->file); // Get the number of bites
+	bytes = ftell(table->file); // Get the number of bites
 
-	return (size_t) bites / table->obj_size;
+	return (size_t) bytes / table->obj_size;
 }
 
 // Updating a record/struct in the database
