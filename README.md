@@ -86,6 +86,8 @@ Bellow is a simple program to insert a point struct into a "database.db" databas
 ```c
 #include "baredb.h"
 
+#pragma packed 1
+
 typedef struct {
     int x;
     int y;
