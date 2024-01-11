@@ -50,12 +50,12 @@ size_t bare_size(table_t* table) {
 	if (table->file == NULL)
 		return -1;
 
-	size_t bytes; // Number of bytes in the file
+	size_t bites; // Number of bites in the file
 
 	fseek(table->file, 0, SEEK_END);
-	bytes = ftell(table->file); // Get the number of bites
+	bites = ftell(table->file); // Get the number of bites
 
-	return (size_t) bytes / table->obj_size;
+	return (size_t) bites / table->obj_size;
 }
 
 // Updating a record/struct in the database
@@ -68,4 +68,39 @@ int bare_update(table_t* table, void* data, uint64_t index) {
 	fwrite(data, table->obj_size, 1, table->file); // Overwrite data
 
 	return 0; // Return success
+}
+
+// Deleting a record/struct at a specific index
+int bare_delete(table_t *table, uint64_t index) {
+    // Error handling
+    if (table->file == NULL)
+        return -1;
+
+    FILE *temp_file = fopen("temp_file.db", "wb+"); // Open a new temporary file for writing
+    if (temp_file == NULL)
+        return -1;
+
+    // Copy records from the original file to the new file, excluding the record to be deleted
+    for (uint64_t i = 0; i < bare_size(table); ++i) {
+        if (i != index) {
+            fseek(table->file, i * table->obj_size, SEEK_SET); // Read record from the original file
+            char buffer[table->obj_size];
+            fread(buffer, table->obj_size, 1, table->file);
+
+            fwrite(buffer, table->obj_size, 1, temp_file); // Write the record to the new file
+        }
+    }
+
+    fclose(table->file); // Close the original file
+
+    fclose(temp_file); // Close the new file and rename it to the original file
+    if (rename("temp_file.db", table->filename) != 0) {
+        remove("temp_file.db");
+        return -1;
+    }
+
+    table->file = fopen(table->filename, "rb+"); // Reopen the original file for reading and writing
+
+    // Return success
+    return 1;
 }

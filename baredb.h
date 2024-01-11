@@ -9,10 +9,9 @@
 #include <string.h> // Copying string
 #include <stdlib.h> // Memory allocation
 #include <inttypes.h> // uint64_t
+#include <unistd.h> // ftruncate()
 
-#pragma pack 1
-
-typedef struct {
+typedef struct __attribute__((packed)) {
 	char filename[255]; // Name of the file/database
 	FILE* file; // Pointer to the file/database
 	size_t obj_size; // Size of object type we want to store (MUST BE THE SAME STRUCT)
@@ -31,4 +30,7 @@ size_t bare_size(table_t* table);
 
 // Update a data in the database
 int bare_update(table_t* table, void* data, uint64_t index); // Updating a record/struct in the database
+															 
+// Function to delete a record/struct at a specific index
+int bare_delete(table_t *table, uint64_t index);
 #endif
