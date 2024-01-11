@@ -6,6 +6,7 @@ BareDB is a lightweight and easy-to-use C library for basic database operations.
 
 - [Overview](#overview)
 - [Features](#features)
+- [Limitations](#limitations)
 - [Why BareDB](#why-baredb)
 - [Getting Started](#getting-started)
 - [Usage](#usage)
