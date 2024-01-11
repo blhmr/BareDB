@@ -50,6 +50,7 @@ make build
 - For a static library:
 ```bash
 gcc -c baredb.c -o libbaredb.o # Compile the Library
+ar rcs libbaredb.a libbaredb.o
 sudo cp libbaredb.so /usr/lib # Copy the Library
 sudo ldconfig # Update Library Cache
 sudo cp baredb.h /usr/include # Include Header Files
