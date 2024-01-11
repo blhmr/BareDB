@@ -1,20 +1,22 @@
 #include "baredb.h"
 #include <stdbool.h>
 
-typedef struct {
+typedef struct
+{
 	char name[20];
 	int age;
 	float gpa;
 	bool is_male;
 } student_t;
 
-student_t create_student(const char*, int, float, bool);
 void read_database(table_t* table);
 
-int main(void) {
-	student_t s1 = create_student("Hatim", 17, 17.70, true);
-	student_t s2 = create_student("Jane Doe", 18, 18.80, false);
+int main(void)
+{
 	table_t table;
+	
+	student_t s1 = {"Hatim", 17, 17.70, true};
+	student_t s2 = {"Jane Doe", 17, 18.0, false};
 
 	size_t num;
 
@@ -42,24 +44,24 @@ int main(void) {
 	read_database(&table);
 
 	printf("Updating struct index 1..\n");
-	student_t new = create_student("John Doe", 15, 15.25, true);
+
+	student_t new = {"John Doe", 15, 15.25, true};
+	
 	bare_update(&table, &new, 1);
 
 	read_database(&table);
 
+	printf("Deleting a record (index 0)..\n");
+	bare_delete(&table, 0);
+
+	read_database(&table);
+	
+	num = bare_size(&table);
+	printf(">> Number of struct/records: %zu\n", num);
+	
 	bare_close(&table);
 
 	return 0;
-}
-
-student_t create_student(const char* name, int age, float gpa, bool is_male)
-{
-	student_t s;
-	s.age = age;
-	s.gpa = gpa;
-	s.is_male = is_male;
-	strcpy(s.name, name);
-	return s;
 }
 
 void read_database(table_t* table)
