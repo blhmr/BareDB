@@ -26,6 +26,9 @@ BareDB is designed to provide a simple yet powerful solution for basic database 
 - More in the future
 (You can use .bin files)
 
+## Limitations
+- Not endian clean, so portability is an issue especially when you want to write in a little endian machine and read data in a big endian machine (or vice-versa)
+
 ## Why BareDB
 
 BareDB simplifies basic database operations in C with a user-friendly and lightweight approach. It provides an intuitive interface for adding, reading, updating, and deleting structs in a database file. Even for beginners, BareDB offers a straightforward way to incorporate database functionalities into C applications. Its minimalist design streamlines code, making database operations accessible and efficient. Whether for small projects or as a component in larger applications, BareDB is a valuable tool, simplifying the implementation of fundamental database functions in C.
