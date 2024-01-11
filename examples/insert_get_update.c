@@ -35,9 +35,9 @@ int main(void) {
 	// Let's get the struct again
 	point p4;
 
-	bare_get(&table, &p2, 0);
+	bare_get(&table, &p4, 0);
 
-	printf("Got (%d, %d)!\n", p2.x, p2.y);
+	printf("Got (%d, %d)!\n", p4.x, p4.y);
 	
 	// Closing the database after finishing working with it
 	bare_close(&table);
