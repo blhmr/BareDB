@@ -10,6 +10,8 @@
 #include <stdlib.h> // Memory allocation
 #include <inttypes.h> // uint64_t
 
+#pragma pack 1
+
 typedef struct {
 	char filename[255]; // Name of the file/database
 	FILE* file; // Pointer to the file/database
